@@ -137,10 +137,9 @@ jobs:
       - name: Deploy to server and build locally
         uses: appleboy/ssh-action@master
         with:
-          host: ssh.cloud.nstu.ru:5904
-          username: root
-          password: 080906julia
-          auth-methods: ["password"]
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /root/backend
             git pull origin main
