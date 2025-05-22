@@ -148,3 +148,4 @@ jobs:
             cd /root/lab4/backend
             git pull origin main
             npm run start
+            echo "correct"
