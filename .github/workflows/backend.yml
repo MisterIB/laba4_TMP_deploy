@@ -29,7 +29,7 @@ jobs:
           sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '080906';"
 
 
-          sudo -u postgres psql your_db_name <<EOF
+          sudo -u postgres psql postgres <<EOF
           CREATE TABLE access_right ( id SERIAL PRIMARY KEY,
           name VARCHAR(32)
           );
