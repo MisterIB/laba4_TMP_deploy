@@ -25,6 +25,7 @@ jobs:
 
       - name: deploy DataBase
         run: |
+          sudo systemctl stop apache2
           sudo systemctl start postgresql
           sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '080906';"
 
