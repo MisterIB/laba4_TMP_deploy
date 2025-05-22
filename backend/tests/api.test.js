@@ -19,6 +19,19 @@ const generateToken = () => {
 };
 
 describe('Auth and Car API Tests', () => {
+  // Тест регистрации
+  test('POST /register should create a new user', async () => {
+    const response = await request(app)
+      .post('/register')
+      .send({
+        username: testUser.username,
+        email: testUser.email,
+        password: testUser.password
+      });
+    
+    expect(response.status).toBe(201);
+    expect(response.body.message).toBe('Регистрация прошла успешно');
+  });
 
   // Тест авторизации
   test('POST /signin should return token for valid credentials', async () => {
@@ -45,6 +58,16 @@ describe('Auth and Car API Tests', () => {
     
     expect(response.status).toBe(401);
     expect(response.body.message).toBe('Неверный пароль!');
+  });
+
+  // Тест получения списка автомобилей (требуется авторизация)
+  test('GET /cars should return list of cars', async () => {
+    const token = generateToken();
+    const response = await request(app)
+      .get('/cars')
+      .set('Cookie', `access_token=${token}`);
+    
+    expect(response.status).toBe(200);
   });
 
   // Тест добавления автомобиля
