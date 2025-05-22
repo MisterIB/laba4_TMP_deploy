@@ -142,9 +142,9 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
 
-            if [ ! -d "/root/backend" ]; then
-              git clone https://github.com/MisterIB/laba4_TMP_deploy.git /root/backend
+            if [ ! -d "/root/lab4" ]; then
+              git clone https://github.com/MisterIB/laba4_TMP_deploy.git /root/lab4
             fi
-            cd /root/backend
+            cd /root/lab4/backend
             git pull origin main
             npm run start
