@@ -15,7 +15,7 @@ exports.getUser = async username => {
 
 exports.createUser = async (username, email, password)  => {
   const { rows } = await pool.query('INSERT INTO users (username, id_access_right, email, hash_password) VALUES ($1, 2, $2, $3) RETURNING *', [username, email, password])
-  return rows?.length >= 1 ? rows[0] : null
+  return rows[0]
 };
 
 exports.updateUser = async (req, res) => {
