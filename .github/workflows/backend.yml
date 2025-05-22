@@ -25,13 +25,11 @@ jobs:
 
       - name: deploy DataBase
         run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql
           sudo systemctl start postgresql
           sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '080906';"
 
 
-
+          sudo -u postgres psql your_db_name <<EOF
           CREATE TABLE access_right ( id SERIAL PRIMARY KEY,
           name VARCHAR(32)
           );
@@ -121,7 +119,7 @@ jobs:
           (2, 4, 4, 4, 'Honda Civic', 'L345JK', 'Серый'),
           (2, 5, 5, 5, 'Mercedes E-Class', 'P987LM', 'Белый'),
           (2, 6, 6, 6, 'Audi A4', 'Q678RS', 'Черный');
-          
+          EOF
 
 
 
