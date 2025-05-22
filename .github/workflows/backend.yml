@@ -29,8 +29,7 @@ jobs:
 
 
 
-          CREATE TABLE access_right (
-	        id SERIAL PRIMARY KEY,
+          CREATE TABLE access_right ( id SERIAL PRIMARY KEY,
           name VARCHAR(32)
           );
 
