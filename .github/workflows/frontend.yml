@@ -23,12 +23,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd frontend
+          cd frontend1
           npm install
 
       - name: Build project
         run: |
-          cd frontend
+          cd frontend1
           CI=false npm run build
 
       - name: Deploy to server
@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd /root/lab4/frontend
+            cd /root/lab4/frontend1
             git pull origin main
 
             npm install
