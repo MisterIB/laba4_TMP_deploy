@@ -34,14 +34,15 @@ jobs:
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd /root/frontend
+            cd /root/lab4/frontend
             git pull origin main
 
             npm install
             npm run build
 
             cp -r build/ /var/www/html
+            echo "correct"
