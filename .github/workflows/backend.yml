@@ -141,6 +141,10 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
+
+            if [ ! -d "/root/backend" ]; then
+              git clone https://github.com/MisterIB/laba4_TMP_deploy.git /root/backend
+            fi
             cd /root/backend
             git pull origin main
             npm run start
