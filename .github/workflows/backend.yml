@@ -28,18 +28,18 @@ jobs:
           sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '080906';"
 
 
-          <<EOF
+
           CREATE TABLE access_right (
-	          id SERIAL PRIMARY KEY,
-            name VARCHAR(32)
+	        id SERIAL PRIMARY KEY,
+          name VARCHAR(32)
           );
 
           CREATE TABLE users (
-            id SERIAL PRIMARY KEY,
-            id_access_right INT NOT NULL REFERENCES access_right(id) ON DELETE CASCADE,
-            username VARCHAR(32) NOT NULL,
-            email VARCHAR(64) NOT NULL,
-            hash_password VARCHAR(64) NOT NULL
+          id SERIAL PRIMARY KEY,
+          id_access_right INT NOT NULL REFERENCES access_right(id) ON DELETE CASCADE,
+          username VARCHAR(32) NOT NULL,
+          email VARCHAR(64) NOT NULL,
+          hash_password VARCHAR(64) NOT NULL
           );
 
           CREATE TABLE measuring_device_system (
@@ -113,13 +113,13 @@ jobs:
             ('Denso RC-600', 8.2, 140000);
 
           INSERT INTO car (id_user, id_onboard_control_system, id_measuring_device_system, id_route_computer, model, plate, color) VALUES
-            (1, 1, 1, 1, 'Toyota Camry', 'A123BC', 'Черный'),
-            (1, 2, 2, 2, 'Ford Focus', 'X456YZ', 'Белый'),
-            (1, 3, 3, 3, 'BMW 320i', 'M789OP', 'Черный'),
-            (2, 4, 4, 4, 'Honda Civic', 'L345JK', 'Серый'),
-            (2, 5, 5, 5, 'Mercedes E-Class', 'P987LM', 'Белый'),
-            (2, 6, 6, 6, 'Audi A4', 'Q678RS', 'Черный');
-          EOF
+          (1, 1, 1, 1, 'Toyota Camry', 'A123BC', 'Черный'),
+          (1, 2, 2, 2, 'Ford Focus', 'X456YZ', 'Белый'),
+          (1, 3, 3, 3, 'BMW 320i', 'M789OP', 'Черный'),
+          (2, 4, 4, 4, 'Honda Civic', 'L345JK', 'Серый'),
+          (2, 5, 5, 5, 'Mercedes E-Class', 'P987LM', 'Белый'),
+          (2, 6, 6, 6, 'Audi A4', 'Q678RS', 'Черный');
+          
 
 
 
